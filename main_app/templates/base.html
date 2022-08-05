@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plant Collector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="https://i.imgur.com/rgY6yni.png" type="image/png">
+</head>
+<body>
+  <header class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <ul>
+          <li><a href="/" class="left brand-logo">&nbsp;&nbsp;<img src="https://i.imgur.com/6XB3mfB.png
+            PlantCollector" alt="">PlantCollector
+           </a></li>
+           <li></li>
+        </ul>
+        <ul class="right">
+          <li><a href="/about">About</a></li>
+          <li><a href="/plants">View All My Plants</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+  <section></section>
+  <footer class="page-footer">
+    <div class="right">All Rights Reserved, &copy; 2022 Plant Collector &nbsp;</div>
+  </footer>
+</body>
+</html>
