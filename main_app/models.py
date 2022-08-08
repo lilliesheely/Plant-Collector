@@ -12,4 +12,6 @@ class Plant(models.Model):
     water = models.CharField(max_length=200)
     maintenance_level = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.laymen_name} ({self.id})' 
  
