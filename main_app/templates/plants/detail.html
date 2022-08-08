@@ -12,6 +12,8 @@
         <p><b>Water: </b>{{ plant.water }} </p>
         <p><b>Maintenance Level: </b>{{ plant.maintenance_level }} </p>
     </div>
+    <a href="{% url 'plants_update' plant.id %}">Edit</a>
+    <a href="{% url 'plants_delete' plant.id %}">Delete</a>
   </div>
 
 {% endblock %} 
