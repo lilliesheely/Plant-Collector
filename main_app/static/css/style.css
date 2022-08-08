@@ -16,7 +16,11 @@ body {
 
 header > nav {
     background-color: #88d9b8;
-    padding-top: 4px;
+    padding-top: 4px;   
+}
+
+#nav-bar-test{
+    color: #b91058;
 }
 
 .card {
@@ -45,3 +49,8 @@ footer.page-footer {
 .forms {
     background-color: rgba(255, 255, 255, 0.85);  
 }
+
+.card-action {
+    color: #b91058;
+}
+
