@@ -1,5 +1,6 @@
 * {
     font-family:'Barlow Semi Condensed', sans-serif; 
+    color: #000000;
 }
 
 body {
@@ -54,3 +55,59 @@ footer.page-footer {
     color: #b91058;
 }
 
+#table-water {
+    background-color: rgba(255, 255, 255, 0.80);    
+}
+
+#water-dates {
+    text-align: center;
+}
+
+#water-btn {
+    margin-bottom: 10px;
+    background-color: #b91058;
+}
+
+.btn {
+    background-color: #b91058;
+}
+
+label {
+    color: #000000; 
+    font-weight: bold;
+    font-size: 25px;
+    padding-right: -20px;
+}
+
+#cancel-btn {
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-delete {
+    width: 250px;
+    margin: auto
+}
+
+.delete-plant {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#cancel-tag {
+    color: #b91058;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#delete-card-content {
+    width: 190px;
+    border: auto;
+    margin: auto;
+}
+
+#new-btn {
+    margin-top: 10px;
+}

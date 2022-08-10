@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Delete Plant</h1>
+<section class="delete-plant">
+<h1>Delete <span id="nav-bar-test">{{object.common_name}}</span></h1>
 
-  <h4>Are you sure you want to delete {{ object.name }}?</h4>
-
-  <form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'detail' plant.id %}" id="nav-bar-test">Cancel</a>
-  </form>
+  <h4>Are you sure you want to delete?</h4>
+  <div class="card" id="card-delete">
+    <div class="card-content" id="delete-card-content">
+      <form action="" method="POST" class="delete-plant">
+        {% csrf_token %}
+        <input type="submit" value="Yes - Delete!" class="btn" id="cancel-btn">
+        <br>
+        <a href="{% url 'detail' plant.id %}" id="cancel-tag">Cancel</a>
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}

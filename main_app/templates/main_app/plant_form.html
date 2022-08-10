@@ -3,9 +3,9 @@
 
 
 {% if object %}
-    <h1>Edit <span class="teal-text">{{object.laymen_name}}</span></h1>
+    <h1>Edit <span id="nav-bar-test">{{object.common_name}}</span></h1>
 {% else %}
-    <h1>Add Plant</h1>
+    <h1>Add New Plant</h1>
 {% endif %}
 <div class="card">
     <div class="card-content">
@@ -14,7 +14,7 @@
             <table>
                 {{ form.as_table }}
             </table>
-            <input type="submit" value="Submit" class="btn">
+            <input type="submit" value="Submit" class="btn" id="new-btn">
         </form>
     </div>
 </div>
