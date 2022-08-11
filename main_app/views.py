@@ -1,7 +1,11 @@
+import os
+import uuid 
+import boto3
+
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Plant, Pot
+from .models import Plant, Pot, Photo
 from .forms import WateringForm
 
 # Create your views here.
@@ -60,6 +64,21 @@ def assoc_pot(request, plant_id, pot_id):
 def unassoc_pot(request, plant_id, pot_id):
     Plant.objects.get(id=plant_id).pots.remove(pot_id)
     return redirect('detail', plant_id=plant_id)
+
+def add_photo(request, plant_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      bucket = os.environ['S3_BUCKET']
+      s3.upload_fileobj(photo_file, bucket, key)
+      url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+      Photo.objects.create(url=url, plant_id=plant_id)
+    except Exception as e:
+      print('An error occurred uploading file to S3')
+      print(e)
+  return redirect('detail', plant_id=plant_id)
 
 class PotList(ListView): 
     model = Pot

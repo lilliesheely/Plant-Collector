@@ -12,6 +12,7 @@ urlpatterns = [
     path('plants/<int:plant_id>/add_watering/', views.add_watering, name='add_watering'),
     path('plants/<int:plant_id>/assoc_pot/<int:pot_id>/', views.assoc_pot, name='assoc_pot'),
     path('plants/<int:plant_id>/unassoc_pot/<int:pot_id>/', views.unassoc_pot, name='unassoc_pot'),
+    path('plants/<int:plant_id>/add_photo/', views.add_photo, name='add_photo'),
     path('pots/', views.PotList.as_view(), name='pots_index'),
     path('pots/create/', views.PotCreate.as_view(), name='pots_create'),
     path('pots/<int:pk>/', views.PotDetail.as_view(), name='pots_detail'),

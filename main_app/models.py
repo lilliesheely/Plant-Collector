@@ -1,5 +1,4 @@
-from secrets import choice
-from unicodedata import name
+
 from django.db import models
 from django.urls import reverse
 from datetime import datetime, timedelta
@@ -48,5 +47,12 @@ class Watering(models.Model):
 
     def __str__ (self):
         return f"Watered on {self.date}"
+
+class Photo(models.Model):
+  url = models.CharField(max_length=200)
+  plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
+  def __self__(self):
+    return f"Photo for plant_id: {self.plant_id} @{self.url}" 
 
    
