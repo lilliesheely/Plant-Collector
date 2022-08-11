@@ -15,8 +15,8 @@
         <p><span class="label-names">Maintenance Level: </span>{{ plant.maintenance_level }} </p>
       </div>
       <div class="card-action">
-        <a href="{% url 'plants_update' plant.id %}" id="nav-bar-test" class="index-atag">Edit</a>
-        <a href="{% url 'plants_delete' plant.id %}" id="nav-bar-test" class="index-atag">Delete</a>
+        <a href="{% url 'plants_update' plant.id %}" id="a-tags-color" class="index-atag">Edit</a>
+        <a href="{% url 'plants_delete' plant.id %}" id="a-tags-color" class="index-atag">Delete</a>
       </div>
     </div>
   </div>
@@ -28,9 +28,9 @@
     </form>
     <br>
     {% if plant.watered %}
-      <div id="nav-bar-test" class="card-panel  center-align">{{plant.common_name}} is all set!</div>
+      <div id="a-tags-color" class="card-panel  center-align">{{plant.common_name}} is all set!</div>
     {% else %}
-      <div id="nav-bar-test" class="card-panel  center-align">{{plant.common_name}} MIGHT be thirsty</div>
+      <div id="a-tags-color" class="card-panel  center-align">{{plant.common_name}} MIGHT be thirsty</div>
     {% endif %}
     <table class="striped" id="table-water">
       <thead>

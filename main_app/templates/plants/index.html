@@ -5,7 +5,7 @@
 
 {% for plant in plants %}
   <div class="card">
-    <a href="{% url 'detail' plant.id %}" class="index-atag">
+    <a href="{% url 'detail' plant.id %}">
       <div class="card-content">
         <span class="card-title">{{ plant.common_name }}</span>
         <p><span class="label-names">Latin Name:</span> <i>{{ plant.latin_name }}</i></p>

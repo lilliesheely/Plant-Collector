@@ -7,14 +7,14 @@
   <div class="col s6 col-offset-3">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ pot.name }}</span>
-        <p>Color: {{ pot.color }}</p>
-        <p>Size: {{ pot.size }}</p>
-        <p>Description: {{ pot.description }}</p>
+        <span class="card-title"> {{ pot.name }}</span>
+        <p><span class="label-names"> Color:</span> {{ pot.color }}</p>
+        <p><span class="label-names"> Size:</span> {{ pot.size }}</p>
+        <p><span class="label-names"> Description:</span> {{ pot.description }}</p>
       </div>
       <div class="card-action">
-        <a href="{% url 'pots_update' pot.id %}" id="nav-bar-test">Edit</a>
-        <a href="{% url 'pots_delete' pot.id %}" id="nav-bar-test">Delete</a>
+        <a href="{% url 'pots_update' pot.id %}" id="a-tags-color">Edit</a>
+        <a href="{% url 'pots_delete' pot.id %}" id="a-tags-color">Delete</a>
       </div>
     </div>
   </div>

@@ -3,6 +3,10 @@
     color: #000000;
 }
 
+main {
+    flex: 1 0 auto;
+}
+
 body {
     display: flex;
     min-height: 100vh;
@@ -20,7 +24,7 @@ header > nav {
     padding-top: 4px;   
 }
 
-#nav-bar-test{
+#a-tags-color{
     color: #b91058;
 }
 
@@ -32,16 +36,6 @@ header > nav {
     background-color: transparent;
 }
 
-main {
-    flex: 1 0 auto;
-}
-
-footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-    background-color: transparent;
-    color: black;
-}
 
 .index-atag {
     color: #b91058;
@@ -116,3 +110,9 @@ label {
     color: #b91058;
 }
 
+footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+    background-color: transparent;
+    color: black;
+}
