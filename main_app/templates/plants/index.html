@@ -8,11 +8,11 @@
     <a href="{% url 'detail' plant.id %}" class="index-atag">
       <div class="card-content">
         <span class="card-title">{{ plant.common_name }}</span>
-        <p><b>Latin Name:</b> <i>{{ plant.latin_name }}</i></p>
-        <p><b>Location:</b> {{ plant.location}}</p>
-        <p><b>Light: </b>{{ plant.light }}</p>
-        <p><b>Water: </b>{{ plant.water }} </p>
-        <p><b>Maintenance Level: </b>{{ plant.maintenance_level }} </p>
+        <p><span class="label-names">Latin Name:</span> <i>{{ plant.latin_name }}</i></p>
+        <p><span class="label-names">Location:</span> {{ plant.location}}</p>
+        <p><span class="label-names">Light: </span>{{ plant.light }}</p>
+        <p><span class="label-names">Water: </span>{{ plant.water }} </p>
+        <p><span class="label-names">Maintenance Level: </span>{{ plant.maintenance_level }} </p>
       </div>
     </a>
   </div>

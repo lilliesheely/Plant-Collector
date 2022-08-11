@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Plant, Pot
-from .forms import WateringForm, PotForm
-# from datetime import datetime
+from .forms import WateringForm
+
 # Create your views here.
 
 
@@ -60,12 +60,6 @@ def assoc_pot(request, plant_id, pot_id):
 def unassoc_pot(request, plant_id, pot_id):
     Plant.objects.get(id=plant_id).pots.remove(pot_id)
     return redirect('detail', plant_id=plant_id)
-
-
-# def watered_this_week(request):
-#   today = datetime.now()
-#   num_watering_this_week = Watering.objects.filter(date__year=today.year, date__month=today.month, date__week=today.week).count()
-  # respond with a render?    
 
 class PotList(ListView): 
     model = Pot
