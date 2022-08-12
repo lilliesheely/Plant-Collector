@@ -26,10 +26,16 @@
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}" id="a-tags-color">About</a></li>
-          <li><a href="{% url 'plants_create' %}" id="a-tags-color">Add a Plant</a></li>
-          <li><a href="{% url 'index' %}" id="a-tags-color">All Plants</a></li>
-          <li><a href="{% url 'pots_index' %}" id="a-tags-color">All Pots</a></li>
-          <li><a href="{% url 'pots_create' %}" id="a-tags-color">Add Pot</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'plants_create' %}" id="a-tags-color">Add a Plant</a></li>
+            <li><a href="{% url 'index' %}" id="a-tags-color">All Plants</a></li>
+            <li><a href="{% url 'pots_index' %}" id="a-tags-color">All Pots</a></li>
+            <li><a href="{% url 'pots_create' %}" id="a-tags-color">Add Pot</a></li>
+            <li><a href="{% url 'logout' %}" id="a-tags-color">Log Out</a></li>
+          {% else %}
+            <li><a href="{% url 'login' %}" id="a-tags-color">Log In</a></li>
+            <li><a href="{% url 'signup' %}" id="a-tags-color">Sign Up</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>

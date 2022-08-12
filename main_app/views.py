@@ -5,11 +5,15 @@ import boto3
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Plant, Pot, Photo
 from .forms import WateringForm
 
 # Create your views here.
-
 
 def home(request):
     return render(request, 'home.html')
@@ -17,10 +21,12 @@ def home(request):
 def about(request): 
     return render(request, 'about.html')
 
+@login_required
 def plants_index(request):
     plants = Plant.objects.all()
     return render(request, 'plants/index.html', {'plants': plants})
 
+@login_required
 def plants_detail(request, plant_id):
     plant = Plant.objects.get(id=plant_id)
     id_list = plant.pots.all().values_list('id')
@@ -36,18 +42,23 @@ def plants_detail(request, plant_id):
         }
     )
 
-class PlantCreate(CreateView):
+class PlantCreate(CreateView, LoginRequiredMixin):
     model = Plant
     fields = ['common_name', 'latin_name', 'location', 'light', 'water', 'maintenance_level']
 
-class PlantUpdate(UpdateView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class PlantUpdate(UpdateView, LoginRequiredMixin):
     model = Plant
     fields = '__all__'
 
-class PlantDelete(DeleteView): 
+class PlantDelete(DeleteView, LoginRequiredMixin): 
     model = Plant
     success_url = '/plants/'    
 
+@login_required
 def add_watering(request, plant_id):
     form = WateringForm(request.POST)
     if form.is_valid():
@@ -56,15 +67,18 @@ def add_watering(request, plant_id):
         new_watering.save()
     return redirect('detail', plant_id=plant_id)
 
+@login_required
 def assoc_pot(request, plant_id, pot_id):
     plant = Plant.objects.get(id=plant_id)
     plant.pots.add(pot_id)
     return redirect('detail', plant_id=plant_id)
 
+@login_required
 def unassoc_pot(request, plant_id, pot_id):
     Plant.objects.get(id=plant_id).pots.remove(pot_id)
     return redirect('detail', plant_id=plant_id)
 
+@login_required
 def add_photo(request, plant_id):
   photo_file = request.FILES.get('photo-file', None)
   if photo_file:
@@ -80,22 +94,39 @@ def add_photo(request, plant_id):
       print(e)
   return redirect('detail', plant_id=plant_id)
 
-class PotList(ListView): 
+
+class PotList(ListView, LoginRequiredMixin): 
     model = Pot
 
-class PotCreate(CreateView):
+
+class PotCreate(CreateView, LoginRequiredMixin):
     model = Pot
     fields = ['name', 'size', 'color', 'description']
 
-class PotDetail(DetailView): 
+
+class PotDetail(DetailView, LoginRequiredMixin): 
     model = Pot
 
-class PotUpdate(UpdateView): 
+
+class PotUpdate(UpdateView, LoginRequiredMixin): 
     model= Pot
     fields = '__all__'
 
-class PotDelete(DeleteView):
+
+class PotDelete(DeleteView, LoginRequiredMixin):
     model = Pot
     success_url = '/pots/'
 
-
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else: 
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
