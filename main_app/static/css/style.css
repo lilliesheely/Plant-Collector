@@ -110,9 +110,9 @@ label {
     color: #b91058;
 }
 
-footer.page-footer {
+.page-footer {
     padding-top: 0;
     text-align: right;
-    background-color: transparent;
+    background-color: #000000;
     color: black;
 }
